@@ -10,19 +10,4 @@ public class LoginController {
     public String mostrarLogin() {
         return "index";
     }
-
-    @GetMapping("/admin")
-    public String vistaAdmin() {
-        return "admin";
-    }
-
-    @GetMapping("/acomodador")
-    public String vistaAcomodador() {
-        return "acomodador";
-    }
-
-    @GetMapping("/cliente")
-    public String vistaCliente() {
-        return "cliente";
-    }
 }

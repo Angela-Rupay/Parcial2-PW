@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vehículos - Acomodador</title>
+  <link rel="stylesheet" href="/css/Style.css">
+</head>
+<body>
+
+<header>Sistema de Parqueadero</header>
+
+<div class="container">
+  <div class="card" style="width: 95%;">
+    <h2>Gestión de Ubicación</h2>
+
+    <table>
+      <thead>
+      <tr>
+        <th>Placa</th>
+        <th>Ubicación Actual</th>
+        <th>Actualizar Ubicación</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <tr th:each="registro : ${registros}">
+        <td th:text="${registro.placa}"></td>
+        <td th:text="${registro.ubicacion}"></td>
+
+        <td>
+          <form th:action="@{'/acomodador/actualizar-ubicacion/' + ${registro.idRegistro}}"
+                method="post">
+
+            <input type="hidden"
+                   th:name="${_csrf.parameterName}"
+                   th:value="${_csrf.token}">
+
+            <input type="text"
+                   name="ubicacion"
+                   placeholder="Nueva ubicación"
+                   required>
+
+            <button type="submit">Actualizar</button>
+          </form>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+    <p><a th:href="@{/acomodador}">Volver</a></p>
+  </div>
+</div>
+
+</body>
+</html>

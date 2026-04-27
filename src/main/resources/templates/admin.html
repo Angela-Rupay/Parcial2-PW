@@ -18,19 +18,22 @@
     <p>Gestión completa del sistema</p>
 
     <div class="nav-links">
-      <form action="#">
+
+      <form th:action="@{/admin/crear-registro}" method="get">
         <button type="submit">Registrar Vehículo</button>
       </form>
-      <form action="#">
-        <button type="submit">Gestionar Tipos</button>
-      </form>
-      <form action="#">
+
+      <form th:action="@{/admin/lista-registros}" method="get">
         <button type="submit">Ver Registros</button>
       </form>
+
       <form th:action="@{/logout}" method="post">
-        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+        <input type="hidden"
+               th:name="${_csrf.parameterName}"
+               th:value="${_csrf.token}">
         <button type="submit">Cerrar Sesión</button>
       </form>
+
     </div>
   </div>
 </div>

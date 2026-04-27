@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Vehículos</title>
+    <link rel="stylesheet" href="/css/Style.css">
+</head>
+<body>
+
+<header>Sistema de Parqueadero</header>
+
+<div class="container">
+    <div class="card" style="width: 95%;">
+        <h2>Vehículos Registrados</h2>
+
+        <table>
+            <thead>
+            <tr>
+                <th>Placa</th>
+                <th>Hora Entrada</th>
+                <th>Hora Salida</th>
+                <th>Ubicación</th>
+                <th>Tipo</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr th:each="registro : ${registros}">
+                <td th:text="${registro.placa}"></td>
+                <td th:text="${registro.horaEntrada}"></td>
+                <td th:text="${registro.horaSalida != null ? registro.horaSalida : 'En parqueadero'}"></td>
+                <td th:text="${registro.ubicacion}"></td>
+                <td th:text="${registro.tipoVehiculo.nombre}"></td>
+
+                <td>
+                    <a th:href="@{'/admin/salida/' + ${registro.idRegistro}}">Salida</a> |
+                    <a th:href="@{'/admin/eliminar/' + ${registro.idRegistro}}">Eliminar</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <br>
+        <a th:href="@{/admin}">Volver</a>
+    </div>
+</div>
+
+</body>
+</html>

@@ -18,19 +18,18 @@
         <p>Consulta de información del parqueadero</p>
 
         <div class="nav-links">
-            <form action="#">
-                <button type="submit">Registrar Vehículo</button>
+
+            <form th:action="@{/cliente/vehiculos}" method="get">
+                <button type="submit">Consultar Vehículos</button>
             </form>
-            <form action="#">
-                <button type="submit">Gestionar Tipos</button>
-            </form>
-            <form action="#">
-                <button type="submit">Ver Registros</button>
-            </form>
+
             <form th:action="@{/logout}" method="post">
-                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+                <input type="hidden"
+                       th:name="${_csrf.parameterName}"
+                       th:value="${_csrf.token}">
                 <button type="submit">Cerrar Sesión</button>
             </form>
+
         </div>
     </div>
 </div>

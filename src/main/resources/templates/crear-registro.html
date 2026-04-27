@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Vehículo</title>
+    <link rel="stylesheet" href="/css/Style.css">
+</head>
+<body>
+
+<header>Sistema de Parqueadero</header>
+
+<div class="container">
+    <div class="card">
+        <h2>Registrar Entrada de Vehículo</h2>
+
+        <form th:action="@{/admin/crear-registro}" method="post">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+
+            <input type="text"
+                   name="placa"
+                   maxlength="6"
+                   placeholder="Placa del vehículo"
+                   required>
+
+            <input type="text"
+                   name="ubicacion"
+                   placeholder="Ubicación (Ej: A-2)"
+                   required>
+
+            <select name="tipoVehiculoId" required>
+                <option value="">Seleccione tipo</option>
+                <option th:each="tipo : ${tiposVehiculo}"
+                        th:value="${tipo.idTipo}"
+                        th:text="${tipo.nombre}">
+                </option>
+            </select>
+
+            <button type="submit">Registrar Entrada</button>
+        </form>
+
+        <p><a th:href="@{/admin}">Volver</a></p>
+    </div>
+</div>
+
+</body>
+</html>

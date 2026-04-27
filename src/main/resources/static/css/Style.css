@@ -85,3 +85,25 @@ a:hover {
     color: white;
     font-size: 16px;
 }
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: #3498db;
+    color: white;
+}
+
+td a {
+    color: #3498db;
+    font-weight: bold;
+}
