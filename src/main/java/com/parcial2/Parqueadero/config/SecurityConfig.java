@@ -30,10 +30,22 @@ public class SecurityConfig {
                 .userDetailsService(usuarioDetailsService)
 
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/", "/css/**").permitAll()
+                        .requestMatchers(
+                                "/",
+                                "/css/**",
+
+                                // Swagger
+                                "/swagger-ui.html",
+                                "/swagger-ui/**",
+                                "/v3/api-docs/**",
+                                "/api-docs/**"
+
+                        ).permitAll()
+
                         .requestMatchers("/admin/**").hasRole("ADMINISTRADOR")
                         .requestMatchers("/acomodador/**").hasRole("ACOMODADOR")
                         .requestMatchers("/cliente/**").hasRole("CLIENTE")
+
                         .anyRequest().authenticated()
                 )
 
